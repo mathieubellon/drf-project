@@ -1,0 +1,19 @@
+# Python/Django specific
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+
+# Django project files
+*.log
+*.pot
+*.pyc
+local_settings.py
+db.sqlite3
+
+# Virtual environment
+.venv/
