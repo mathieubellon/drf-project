@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ["decide-x6lq.onrender.com","127.0.0.1"]
 # Application definition
 
 INSTALLED_APPS = [
-    'homepage.apps.HomepageConfig',
+    'accounts.apps.AccountConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'ideas',
 ]
 
 MIDDLEWARE = [
@@ -140,5 +141,7 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 1000
 }
