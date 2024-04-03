@@ -1,7 +1,7 @@
 def main():
     fake: Faker = Faker()
 
-    for i in range(30):
+    for i in range(3000):
         idea = Idea.objects.create(
             name=fake.paragraph(nb_sentences=1),
             content=fake.text(),
