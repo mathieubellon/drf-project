@@ -1,8 +1,11 @@
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
+
+from . import views
 
 urlpatterns = [
-   path('admin/', admin.site.urls),
-    # this is module path copy this as it is
-    path('auth/', include('allauth.urls')),
+    path("", views.homepage),
+    path("auth/", include("allauth.urls")),
+    path("ideas/", include("ideas.urls")),
+    path("admin/", admin.site.urls),
 ]
