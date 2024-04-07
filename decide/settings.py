@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.github",
+    "allauth.socialaccount.providers.google",
 ]
 
 MIDDLEWARE = [
@@ -178,5 +179,16 @@ SOCIALACCOUNT_PROVIDERS = {
         },
         "SCOPE": ["user", "user:email"],
         "VERIFIED_EMAIL": False,
-    }
+    },
+    "google": {
+        "APPS": [
+            {
+                "client_id": env("GOOGLE_CLIENT_ID"),
+                "secret": env("GOOGLE_CLIENT_SECRET"),
+            }
+        ],
+        "SCOPE": [
+            "email",
+        ],
+    },
 }
