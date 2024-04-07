@@ -11,7 +11,14 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import dj_database_url
 from pathlib import Path
+import environ
 import os
+
+env = environ.Env(
+    # set casting, default value
+    # DEBUG=(bool, False)
+)
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,7 +39,6 @@ ALLOWED_HOSTS = ["decide-x6lq.onrender.com","127.0.0.1"]
 # Application definition
 
 INSTALLED_APPS = [
-    'accounts.apps.AccountConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,9 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'ideas',
-    'oauth2_provider',
-    'social_django',
-    'drf_social_oauth2',
+    'django_extensions',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'decide.urls'
@@ -69,9 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
+                'django.contrib.messages.context_processors.messages'
             ],
         },
     },
@@ -86,7 +93,7 @@ WSGI_APPLICATION = 'decide.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgresql://matthieu:matthieu@localhost:5432/decideDB',
+        default='postgresql://matthieu:matthieu@localhost:5432/decide',
         conn_max_age=600
     )
 }
@@ -145,14 +152,33 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',  # django-oauth-toolkit >= 1.0.0
-        'drf_social_oauth2.authentication.SocialAuthentication',
+        'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 1000
 }
 
-AUTHENTICATION_BACKENDS = (
-   'drf_social_oauth2.backends.DjangoOAuth2',
+AUTHENTICATION_BACKENDS= [
    'django.contrib.auth.backends.ModelBackend',
-)
+   'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+LOGIN_REDIRECT_URL="/auth/social/connections/"
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': env('GITHUB_CLIENT_ID'),
+            'secret': env('GITHUB_CLIENT_SECRET'),
+        },
+        "SCOPE": [
+           'user',
+           'user:email'
+        ],
+        "VERIFIED_EMAIL": False
+    }
+}
