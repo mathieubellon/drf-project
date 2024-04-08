@@ -18,7 +18,6 @@ class Idea(models.Model):
                     {"title": "Medium", "value": "medium"},
                     {"title": "Low", "value": "low"},
                 ],
-                "default": "Medium",
             },
             "votePremium": {"type": "number"},
             "whatIf": {"type": "string"},
@@ -42,7 +41,7 @@ class Idea(models.Model):
     workspace = models.ForeignKey(
         "workspaces.Workspace", related_name="ideas", on_delete=models.CASCADE
     )
-    dimensions = JSONField(schema=DIMENSIONS_SCHEMA, blank=True, default={})
+    dimensions = JSONField(schema=DIMENSIONS_SCHEMA, blank=True, default=dict)
     votes_count = models.IntegerField(default=0)
     priority = models.IntegerField(default=0)
     formula = models.TextField(null=True, blank=True)

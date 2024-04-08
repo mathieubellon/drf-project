@@ -417,6 +417,22 @@ files = [
 django = ">=2.0"
 
 [[package]]
+name = "djangocodemirror"
+version = "2.1.0"
+description = "Django CodeMirror is a Django application to embed CodeMirror"
+optional = false
+python-versions = "*"
+files = [
+    {file = "djangocodemirror-2.1.0.tar.gz", hash = "sha256:424478e009883134bf5aa3291195e51aec1c0f9eed50c9757d643d150dbe2597"},
+]
+
+[package.dependencies]
+Django = ">=1.11"
+
+[package.extras]
+dev = ["flake8", "pytest", "pytest-django", "sphinx", "sphinx-rtd-theme"]
+
+[[package]]
 name = "djangorestframework"
 version = "3.15.1"
 description = "Web APIs for Django, made easy."
@@ -959,4 +975,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12.1"
-content-hash = "82480ae10f8c0b9d1a358a77f8f592512db1a18d49957e32524cdd18d912392c"
+content-hash = "026ca43611861f11f91914d6a76a77ffb3489e4a26ffb1d94919230a03004116"
