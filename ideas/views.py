@@ -11,6 +11,6 @@ class IdeaViewSet(viewsets.ModelViewSet):
     API endpoint that allows users to be viewed or edited.
     """
 
-    queryset = Idea.objects.all().order_by("-created")
+    queryset = Idea.objects.all()
     serializer_class = IdeaSerializer
     permission_classes = [permissions.IsAuthenticated]

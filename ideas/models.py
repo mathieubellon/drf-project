@@ -19,7 +19,9 @@ class Idea(models.Model):
     workspace = models.ForeignKey(
         "workspaces.Workspace", related_name="ideas", on_delete=models.CASCADE
     )
-    properties = models.JSONField(default=dict)
+    votes_count = models.IntegerField(default=0)
+    priority = models.IntegerField(default=0)
+    formula = models.TextField(blank=True, default="")
 
     class Meta:
         ordering = ["created"]
