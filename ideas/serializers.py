@@ -14,5 +14,12 @@ class IdeaSerializer(serializers.ModelSerializer):
         # for filtering/ordering issues maybe evaluate the formula as a model property https://django.cowhite.com/blog/dynamic-fields-in-django-rest-framwork-serializers/
         exp = Exp()
         operand = exp.parse(obj.formula)
-        result = exp.eval(operand, {"votes": obj.votes_count, "priority": obj.priority})
+        result = exp.eval(
+            operand,
+            {
+                "votes": obj.votes_count,
+                "priority": obj.priority,
+                "dimensions": obj.dimensions,
+            },
+        )
         return result
