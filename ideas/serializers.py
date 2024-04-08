@@ -5,4 +5,4 @@ from ideas.models import Idea
 class IdeaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Idea
-        fields = ['id', 'name', 'content', 'created']
+        fields = "__all__"

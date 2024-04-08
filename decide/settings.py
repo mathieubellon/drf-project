@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "ideas",
+    "workspaces",
     "django_extensions",
     "allauth",
     "allauth.account",

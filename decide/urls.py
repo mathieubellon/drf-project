@@ -7,5 +7,6 @@ urlpatterns = [
     path("", views.homepage),
     path("auth/", include("allauth.urls")),
     path("ideas/", include("ideas.urls")),
+    path("workspaces/", include("workspaces.urls")),
     path("admin/", admin.site.urls),
 ]
