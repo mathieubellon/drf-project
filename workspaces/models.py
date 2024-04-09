@@ -10,12 +10,6 @@ class Workspace(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=100)
     description = models.TextField()
-    owner = models.ForeignKey(
-        "auth.User",
-        related_name="own_workspaces",
-        on_delete=models.SET(get_deleted_user),
-    )
-    members = models.ManyToManyField("auth.User", related_name="member_of_workspaces")
 
     class Meta:
         ordering = ["created_at"]

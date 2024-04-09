@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "ideas",
+    "core",
     "workspaces",
     "django_extensions",
     "allauth",
@@ -69,6 +70,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    "core.middleware.OnboardingMiddleware",
 ]
 
 ROOT_URLCONF = "decide.urls"
@@ -123,6 +125,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+AUTH_USER_MODEL = "core.CustomUser"
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -169,9 +173,12 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
+#####################################
+# Django ALLAUTH
+#####################################
 LOGIN_REDIRECT_URL = "/"
-
-# Provider specific settings
+# Todo: Make email mandatory
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
 SOCIALACCOUNT_PROVIDERS = {
     "github": {
         # For each OAuth based provider, either add a ``SocialApp``

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django_jsonform.models.fields import JSONField
+from django.conf import settings
 
 
 def get_deleted_user():
@@ -33,7 +34,7 @@ class Idea(models.Model):
     name = models.CharField(max_length=100, blank=True, default="")
     content = models.TextField()
     created_by = models.ForeignKey(
-        "auth.User",
+        settings.AUTH_USER_MODEL,
         related_name="ideas",
         null=True,
         on_delete=models.SET(get_deleted_user),
