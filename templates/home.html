@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content%}
-    <h1>Welcome to your Decide workspace named {{ user.workspace.name }}</h1>
+    <h1 class="text-xl font-medium">Welcome to your Decide workspace named {{ user.workspace.name }}</h1>
     <p>This is the index page.</p>
     {% if user.is_authenticated %}
     <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
@@ -13,6 +13,7 @@
     
     <hr>
     <a href="/ideas">ideas</a>
+    <a href="{% url 'ideas:create' %}"> Create idea </a><a href="{% url 'ideas:list' %}"> List idea </a>
     <br>
     <a href="/workspaces/">workspaces</a>
 

@@ -24,7 +24,6 @@ class WorkspaceForm(ModelForm):
 
 
 def create_workspace(request):
-    print(request.method)
     if request.method == "POST":
         # create a form instance and populate it with data from the request:
         form = WorkspaceForm(

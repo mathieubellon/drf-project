@@ -31,8 +31,8 @@ class Idea(models.Model):
         "required": ["pression"],
     }
     created = models.DateTimeField(auto_now_add=True)
-    name = models.CharField(max_length=100, blank=True, default="")
-    content = models.TextField()
+    name = models.CharField(max_length=100)
+    content = models.TextField(null=True, blank=True)
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name="ideas",
@@ -42,9 +42,9 @@ class Idea(models.Model):
     workspace = models.ForeignKey(
         "workspaces.Workspace", related_name="ideas", on_delete=models.CASCADE
     )
-    dimensions = JSONField(schema=DIMENSIONS_SCHEMA, blank=True, default=dict)
-    votes_count = models.IntegerField(default=0)
-    priority = models.IntegerField(default=0)
+    dimensions = JSONField(schema=DIMENSIONS_SCHEMA, null=True, default=dict)
+    votes_count = models.IntegerField(default=0, null=True)
+    priority = models.IntegerField(default=0, null=True)
     formula = models.TextField(null=True, blank=True)
 
     class Meta:
