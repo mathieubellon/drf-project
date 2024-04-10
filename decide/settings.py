@@ -209,9 +209,10 @@ DJANGO_VITE = {
     "default": {
         "dev_mode": env("DJANGO_VITE_DEV_MODE", default=False, cast=bool),
         "dev_server_port": env("DJANGO_VITE_DEV_SERVER_PORT", default="5173"),
+        "manifest_path": BASE_DIR / "static/dist/.vite/manifest.json",
     }
 }
 
 # Add the build.outDir from vite.config.js to STATICFILES_DIRS
 # so that collectstatic can collect your compiled vite assets.
-STATICFILES_DIRS = [BASE_DIR / "core/vite_assets_dist"]
+STATICFILES_DIRS = [BASE_DIR / "static/dist"]

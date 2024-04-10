@@ -15,8 +15,8 @@ const postcssConfig = {
 export default defineConfig((mode) => {
   const env = loadEnv(mode, process.cwd(), '');
 
-  const INPUT_DIR = './core/vite_assets';
-  const OUTPUT_DIR = './core/vite_assets_dist';
+  const INPUT_DIR = './static/src';
+  const OUTPUT_DIR = './static/dist';
 
   return {
     // plugins: [vue()],
