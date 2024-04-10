@@ -177,6 +177,10 @@ AUTHENTICATION_BACKENDS = [
 #####################################
 # Django ALLAUTH
 #####################################
+
+# Before login, redirect to this custom login page provided by allauth
+LOGIN_URL = "/auth/login"
+# After login, redirect to this page
 LOGIN_REDIRECT_URL = "/"
 # Todo: Make email mandatory
 SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
@@ -207,7 +211,7 @@ SOCIALACCOUNT_PROVIDERS = {
 # legacy django-vite settings
 DJANGO_VITE = {
     "default": {
-        "dev_mode": env("DJANGO_VITE_DEV_MODE", default=False, cast=bool),
+        "dev_mode": env("DJANGO_VITE_DEV_MODE", default=True, cast=bool),
         "dev_server_port": env("DJANGO_VITE_DEV_SERVER_PORT", default="5173"),
         "manifest_path": BASE_DIR / "static/dist/.vite/manifest.json",
     }

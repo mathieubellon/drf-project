@@ -1,16 +1,16 @@
 {
   "main.css": {
-    "file": "assets/css-vvDak0o3.css",
+    "file": "assets/css--FsleOXs.css",
     "src": "main.css",
     "isEntry": true
   },
   "main.js": {
-    "file": "assets/home-DdzTXdMf.js",
+    "file": "assets/home-fFE6opKC.js",
     "name": "home",
     "src": "main.js",
     "isEntry": true,
     "css": [
-      "assets/css-vvDak0o3.css"
+      "assets/css--FsleOXs.css"
     ]
   }
 }

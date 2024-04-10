@@ -6,6 +6,7 @@ from django.forms import ModelForm
 from django.http import HttpResponseRedirect
 from core.models import CustomUser
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 
 class IdeaViewSet(viewsets.ModelViewSet):
@@ -31,6 +32,7 @@ class IdeaForm(ModelForm):
         fields = ("name", "content", "formula", "priority", "votes_count")
 
 
+@login_required
 def create_idea(request):
     if request.method == "POST":
         # create a form instance and populate it with data from the request:
@@ -51,6 +53,7 @@ def create_idea(request):
     return render(request, "create_idea.html", {"form": form})
 
 
+@login_required
 def list_ideas(request):
     ideas = Idea.objects.all().filter(
         workspace=CustomUser.objects.get(pk=request.user.id).workspace

@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-<table>
-    <thead>
+<table class="table-fixed">
+    <thead class="bg-slate-200 text-black border border-b-slate-400">
         <tr>
             <th>Name</th>
             <th>Content</th>
+            <th>Votes</th>
+            <th>Priority</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -12,6 +15,9 @@
         <tr>
             <td>{{ idea.name }}</td>
             <td>{{ idea.content }}</td>
+            <td>{{ idea.votes }}</td>
+            <td>{{ idea.priority }}</td>
+            <td><a class="bg-blue-600 text-white p-2 rounded" href="">edit</a></td>
         </tr>
         {% endfor %}
     </tbody>

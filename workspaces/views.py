@@ -5,16 +5,24 @@ from rest_framework import permissions, viewsets
 from django.forms import ModelForm
 from django.http import HttpResponseRedirect
 from core.models import CustomUser, Roles
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
+from django.contrib.auth.models import User
 
 
-class WorkspaceViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-
-    queryset = Workspace.objects.all().order_by("-created_at")
+class ListWorkspaces(APIView):
+    # authentication_classes = [authentication.TokenAuthentication]
     serializer_class = WorkspaceSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request, format=None):
+        """
+        Return a list of all users.
+        """
+        workspaces = Workspace.objects.filter(users__id=request.user.id)
+        serializer = WorkspaceSerializer(workspaces, many=True)
+        return Response(serializer.data)
 
 
 class WorkspaceForm(ModelForm):

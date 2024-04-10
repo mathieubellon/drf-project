@@ -1,6 +1,6 @@
 {% load django_vite %}
 <!DOCTYPE html>
-<html>
+<html class="h-full">
 
 <head>
     <title>Decide</title>
@@ -8,9 +8,21 @@
     {% vite_asset 'main.js' %}
 </head>
 
-<body>
-    {% block content%}
-    {% endblock %}
+<body class="h-full">
+    <wrapper class="flex flex-row h-full">
+        <nav class="flex flex-col border border-r-slate-300 p-10">
+            <a class="navItem" href="{% url 'home' %}">Home</a>
+            <a class="navItem" href="{% url 'ideas:list' %}">Ideas</a>
+            <a class="navItem" href="{% url 'ideas:create' %}">New idea</a>
+            <a class="navItem" href="{% url 'workspaces:list' %}">workspaces</a>
+            <a class="navItem" href="{% url 'account_logout' %}">Logout</a>
+        </nav>
+        <div class="p-10 flex-1">
+            {% block content%}
+            {% endblock %}
+        </div>
+    </wrapper>
+
 </body>
 
 </html>

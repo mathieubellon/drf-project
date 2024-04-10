@@ -3,6 +3,10 @@ from workspaces import views
 
 app_name = "workspaces"
 urlpatterns = [
-    path("", views.WorkspaceViewSet.as_view({"get": "list", "post": "create"})),
+    path(
+        "",
+        views.ListWorkspaces.as_view(),
+        name="list",
+    ),
     path("create/", views.create_workspace, name="create"),
 ]
