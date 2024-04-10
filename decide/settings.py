@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
     "django_jsonform",
     "django_filters",
+    "django_vite",
 ]
 
 MIDDLEWARE = [
@@ -203,3 +204,14 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
     },
 }
+# legacy django-vite settings
+DJANGO_VITE = {
+    "default": {
+        "dev_mode": env("DJANGO_VITE_DEV_MODE", default=False, cast=bool),
+        "dev_server_port": env("DJANGO_VITE_DEV_SERVER_PORT", default="5173"),
+    }
+}
+
+# Add the build.outDir from vite.config.js to STATICFILES_DIRS
+# so that collectstatic can collect your compiled vite assets.
+STATICFILES_DIRS = [BASE_DIR / "core/vite_assets_dist"]

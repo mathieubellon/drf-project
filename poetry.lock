@@ -417,6 +417,23 @@ files = [
 django = ">=2.0"
 
 [[package]]
+name = "django-vite"
+version = "3.0.4"
+description = "Integration of Vite in a Django project."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-vite-3.0.4.tar.gz", hash = "sha256:043ab5068b4c66eb33cb26c5215a6dfe275d3c4de15d59b0b7b97b4567912fb0"},
+    {file = "django_vite-3.0.4-py3-none-any.whl", hash = "sha256:e4088e0c79b7c9cf013ebb2ae0117a8fa57646337a40e90209ba916d65f359d3"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+
+[package.extras]
+dev = ["black"]
+
+[[package]]
 name = "djangocodemirror"
 version = "2.1.0"
 description = "Django CodeMirror is a Django application to embed CodeMirror"
@@ -975,4 +992,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12.1"
-content-hash = "026ca43611861f11f91914d6a76a77ffb3489e4a26ffb1d94919230a03004116"
+content-hash = "d3f5d561b7171bd436de3f5209a2e7d7913dd79fc911ba3ae06a487c4b352de9"

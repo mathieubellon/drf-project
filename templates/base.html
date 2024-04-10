@@ -1,10 +1,11 @@
+{% load django_vite %}
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Decide</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://unpkg.com/@tailwindcss/forms/dist/forms.min.css" rel="stylesheet">
+    {% vite_hmr_client %}
+    {% vite_asset 'main.js' %}{% vite_asset 'main.css' %}
 </head>
 
 <body>
