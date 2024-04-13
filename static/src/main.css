@@ -2,4 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+.navigation{
+    @apply flex flex-col border border-r-stone-100 p-2 bg-stone-50;
+}
+.navItem {
+    @apply text-sm font-bold p-2 rounded mb-1;
+    @apply hover:bg-white hover:cursor-pointer;
+}
 
+.workspaceDisplay {
+    @apply bg-white text-sm font-bold p-3 rounded border border-stone-500 mb-5;
+    @apply hover:bg-slate-100 hover:cursor-pointer;
+}

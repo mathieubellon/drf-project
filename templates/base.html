@@ -10,8 +10,8 @@
 
 <body class="h-full">
     <wrapper class="flex flex-row h-full">
-        <nav class="flex flex-col border border-r-slate-300 p-5">
-            <div class="text-base font-medium mb-5">{{user.workspace.name}}</div>
+        <nav class="navigation">
+            <div class="workspaceDisplay">{{user.workspace.name}}</div>
             <a class="navItem" href="{% url 'home' %}">Home</a>
             <a class="navItem" href="{% url 'ideas:list' %}">Ideas</a>
             <a class="navItem" href="">Boards</a>

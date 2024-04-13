@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "core",
     "workspaces",
     "django_extensions",
+    "allauth_ui",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
     "django_jsonform",
     "django_filters",
     "django_vite",
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [
@@ -181,7 +183,7 @@ AUTHENTICATION_BACKENDS = [
 # Before login, redirect to this custom login page provided by allauth
 LOGIN_URL = "/auth/login"
 # After login, redirect to this page
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/ideas"
 # Todo: Make email mandatory
 SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
 SOCIALACCOUNT_PROVIDERS = {
