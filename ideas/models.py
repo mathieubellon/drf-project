@@ -2,10 +2,41 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django_jsonform.models.fields import JSONField
 from django.conf import settings
+from core.models import CustomUser
+from rest_framework import filters
+from py_expression.core import Exp
 
 
 def get_deleted_user():
     return get_user_model().objects.get_or_create(username="deleted")[0]
+
+
+class IsOwnerFilterBackend(filters.BaseFilterBackend):
+    """
+    Filter that only allows users to see their own objects.
+    """
+
+    def filter_queryset(self, request, queryset, view):
+        return queryset.filter(
+            workspace=CustomUser.objects.get(pk=request.user.id).workspace
+        )
+
+
+class Formula(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    content = models.TextField(null=True, blank=True)
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        related_name="formulas",
+        null=True,
+        on_delete=models.SET(get_deleted_user),
+    )
+    workspace = models.ForeignKey(
+        "workspaces.Workspace", related_name="formulas", on_delete=models.CASCADE
+    )
+
+    class Meta:
+        ordering = ["created"]
 
 
 class Idea(models.Model):

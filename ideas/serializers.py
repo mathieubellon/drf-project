@@ -1,6 +1,13 @@
 from rest_framework import serializers
 from ideas.models import Idea
 from py_expression.core import Exp
+from ideas.models import Formula
+
+
+class FormulaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Formula
+        fields = "__all__"
 
 
 class IdeaSerializer(serializers.ModelSerializer):

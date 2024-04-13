@@ -10,14 +10,15 @@
 
 <body class="h-full">
     <wrapper class="flex flex-row h-full">
-        <nav class="flex flex-col border border-r-slate-300 p-10">
+        <nav class="flex flex-col border border-r-slate-300 p-5">
+            <div class="text-base font-medium mb-5">{{user.workspace.name}}</div>
             <a class="navItem" href="{% url 'home' %}">Home</a>
             <a class="navItem" href="{% url 'ideas:list' %}">Ideas</a>
-            <a class="navItem" href="{% url 'ideas:create' %}">New idea</a>
-            <a class="navItem" href="{% url 'workspaces:list' %}">workspaces</a>
+            <a class="navItem" href="">Boards</a>
+            <a class="navItem" href="{% url 'workspaces:list' %}">Settings</a>
             <a class="navItem" href="{% url 'account_logout' %}">Logout</a>
         </nav>
-        <div class="p-10 flex-1">
+        <div class="flex-1">
             {% block content%}
             {% endblock %}
         </div>

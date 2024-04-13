@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from 'vite';
 import { resolve, join } from 'path';
-// import vue from '@vitejs/plugin-vue';
+import vue from '@vitejs/plugin-vue';
 
 const postcssConfig = {
   plugins: [
@@ -19,11 +19,11 @@ export default defineConfig((mode) => {
   const OUTPUT_DIR = './static/dist';
 
   return {
-    // plugins: [vue()],
+    plugins: [vue()],
     resolve: {
       alias: {
         '@': resolve(INPUT_DIR),
-        // 'vue': 'vue/dist/vue.esm-bundler.js',
+        'vue': 'vue/dist/vue.esm-bundler.js',
       },
     },
     root: resolve(INPUT_DIR),
