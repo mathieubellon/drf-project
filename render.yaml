@@ -10,7 +10,6 @@ services:
     plan: free
     name: decide
     runtime: python
-    plan: free
     region: frankfurt
     branch: main
     buildCommand: "./build.sh"
