@@ -34,7 +34,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["decide-czrc.onrender.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["decide-czrc.onrender.com", "127.0.0.1", "http://localhost:5173/"]
 
 
 # Application definition
@@ -59,13 +59,14 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
     "django_jsonform",
     "django_filters",
-    "widget_tweaks",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -191,8 +192,8 @@ SOCIALACCOUNT_PROVIDERS = {
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         "APP": {
-            "client_id": env("GITHUB_CLIENT_ID"),
-            "secret": env("GITHUB_CLIENT_SECRET"),
+            "client_id": env("GITHUB_ID"),
+            "secret": env("GITHUB_SECRET"),
         },
         "SCOPE": ["user", "user:email"],
         "VERIFIED_EMAIL": False,
@@ -214,3 +215,12 @@ SOCIALACCOUNT_PROVIDERS = {
 # Add the build.outDir from vite.config.js to STATICFILES_DIRS
 # so that collectstatic can collect your compiled vite assets.
 STATICFILES_DIRS = [BASE_DIR / "assets/"]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
+# REST_AUTH = {
+#     "USE_JWT": False,
+#     "JWT_AUTH_COOKIE": "jwt-auth",
+# }
+
