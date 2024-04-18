@@ -19,6 +19,8 @@ services:
         value: 3.12.1
       - key: POETRY_VERSION
         value: 1.8.2
+      - key: DEBUG
+        value: false
       - key: DATABASE_URL
         fromDatabase:
           name: decidedb
