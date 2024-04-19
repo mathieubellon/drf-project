@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     "core",
     "workspaces",
     "django_extensions",
-    "allauth_ui",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -223,4 +222,3 @@ CORS_ALLOWED_ORIGINS = [
 #     "USE_JWT": False,
 #     "JWT_AUTH_COOKIE": "jwt-auth",
 # }
-

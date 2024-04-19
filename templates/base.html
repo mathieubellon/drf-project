@@ -4,13 +4,14 @@
 
 <head>
     <title>Decide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{% static 'main.css' %}">
     <script src="{% static 'main.js' %}"></script>
 </head>
 
 <body class="h-full">
     <wrapper class="flex flex-row h-full">
-        <nav class="navigation">
+        <nav class="flex flex-col px-10 bg-zinc-100">
             <div class="workspaceDisplay">{{user.workspace.name}}</div>
             <a class="navItem" href="{% url 'home' %}">Home</a>
             <a class="navItem" href="{% url 'ideas:list' %}">Ideas</a>
